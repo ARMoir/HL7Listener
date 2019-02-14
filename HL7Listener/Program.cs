@@ -24,9 +24,23 @@ namespace HL7Listener
 
                 var PortSTR = Properties.Settings.Default.Port;
 
-                var Directory = Properties.Settings.Default.Directory;        
+                var Directory = Properties.Settings.Default.Directory;
 
-                Console.WriteLine("LISTENING ON PORT " + PortSTR);
+                string LocalIP;
+
+                using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
+
+                {
+
+                    socket.Connect("8.8.8.8", 65530);
+
+                    IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
+
+                    LocalIP = endPoint.Address.ToString();
+
+                }
+
+                Console.WriteLine("LISTENING ON "+ LocalIP + ":" + PortSTR);
 
                 Console.WriteLine("WRITING TO " + Directory);
 
