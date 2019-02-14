@@ -46,7 +46,7 @@ namespace HL7Listener
 
                 Console.WriteLine("SYSTEM READY");
 
-                var Count = 0;
+                int Count = 0;
 
                 int Port = int.Parse(PortSTR);
 
